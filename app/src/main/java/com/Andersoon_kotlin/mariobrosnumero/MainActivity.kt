@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
             listaNumeros.add(n)
         }
 
-        val numeroAleatorio = java.util.Random().nextInt(11)
+        val numeroAleatorio = java.util.Random().nextInt(11 )
 
         val imgNumero = when (numeroAleatorio) {
             0 -> {
