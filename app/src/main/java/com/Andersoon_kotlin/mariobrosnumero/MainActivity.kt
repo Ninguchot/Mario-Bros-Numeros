@@ -1,5 +1,6 @@
 package com.Andersoon_kotlin.mariobrosnumero
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -30,10 +31,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN // Esconder o StatusBar
-        
+
+        binding.numeroSurpresa.setBackgroundResource(R.drawable.caixa) //vai aparecer a caixa surpresa
+
         binding.btPlay.setOnClickListener {view ->
-            val numeroDigitado = binding.editNumero.text.toString().toInt()
-            gerarNumeroAleatorio(view,numeroDigitado)
+            val numeroDigitado = binding.editNumero.text.toString()
+
+            if (numeroDigitado.isEmpty()){
+                mensagem(view,"Coloque um numero","#FF0000")
+            }else{
+                gerarNumeroAleatorio(view,numeroDigitado.toInt())
+            }
         }
 
         binding.btReset.setOnClickListener{
@@ -118,6 +126,8 @@ class MainActivity : AppCompatActivity() {
 
         if (progresso > 90){
         //navegar pra tela de Game Over
+            val intent = Intent(this,GameOver::class.java)
+            startActivity(intent)
         }
     }
 
@@ -129,3 +139,17 @@ class MainActivity : AppCompatActivity() {
         snackbar.show()
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
